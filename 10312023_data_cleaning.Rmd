@@ -1,0 +1,106 @@
+---
+title: "10312023_graph"
+author: "Ryo Tanaka"
+date: "2023-11-01"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(tidyverse)
+eco <- read_csv("../Project1/stage.csv")
+```
+
+```{r}
+eco$Date <- as.Date(eco$Date,"%m/%d/%Y")
+colnames(eco)[2] <- "sp"
+eco
+
+# eco <- eco %>% 
+#   mutate(sp = as.numeric(eco$sp),
+#          GDP = as.numeric(eco$GDP),
+#          Real_GDP = as.numeric(eco$Real_GDP),
+#          Resi_Pop = as.numeric(eco$Resi_Pop),
+#          Elec = as.numeric(eco$Elec),
+#          Unemp = as.numeric(eco$Unemp),
+#          house = as.numeric(eco$house),
+#          money_supply = as.numeric(eco$money_supply),
+#          prod = as.numeric(eco$prod),
+#          cpi = as.numeric(eco$cpi),
+#          pers_cosum = as.numeric(eco$pers_cosum),
+#          security = as.numeric(eco$security),
+#          bitcoin = as.numeric(eco$bitcoin),
+#          euro_oil = as.numeric(eco$euro_oil),
+#          R_gold_price = as.numeric(eco$R_gold_price),
+#          R_30_mortgage_rate = as.numeric(eco$R_30_mortgage_rate),
+#          R_natural_gas = as.numeric(eco$R_natural_gas),
+#          R_corn_price = as.numeric(eco$R_corn_price))
+
+#done
+plot(eco$Date, 
+     eco$R_corn_price, 
+     type = "l", xlab = "Date", ylab = "Price", main = "Corn Price over the past 20 years")
+#done
+plot(eco$Date, 
+     eco$R_natural_gas, 
+     type = "l", xlab = "Date", ylab = "Price", main = "Natural Gas over the past 20 years")
+#done
+plot(eco$Date, 
+     eco$R_30_mortgage_rate, 
+     type = "l", xlab = "Date", ylab = "Price", main = "30-year mortgage rate over the past 20 years")
+#done
+plot(eco$Date, 
+     eco$R_gold_price, 
+     type = "l", xlab = "Date", ylab = "Price", main = "Gold over the past 20 years")
+#done
+plot(eco$Date, 
+     eco$sp, 
+     type = "l", xlab = "Date", ylab = "Price", main = "S&P over the past 20 years")
+
+# done
+plot(eco$Date, 
+     eco$euro_oil, 
+     type = "l", xlab = "Date", ylab = "Price", main = "Oil in EU over the past 20 years")
+
+# done
+plot(eco$Date, 
+     eco$security, 
+     type = "l", xlab = "Date", ylab = "Price", main = "S&P over the past 20 years")
+
+# done
+plot(eco$Date, 
+     eco$pers_cosum, 
+     type = "l", xlab = "Date", ylab = "Price", main = "S&P over the past 20 years")
+
+plot(eco$Date, 
+     eco$sp, 
+     type = "l", xlab = "Date", ylab = "Price", main = "S&P over the past 20 years")
+
+# done
+plot(eco$Date, 
+     eco$cpi, 
+     type = "l", xlab = "Date", ylab = "Price", main = "(CPI) over the past 20 years")
+
+#done
+plot(eco$Date, 
+     eco$prod, 
+     type = "l", xlab = "Date", ylab = "Price", main = "Industrial Production over the past 20 years")
+
+#done
+plot(eco$Date, 
+     eco$money_supply,
+     type = "l", xlab = "Date", ylab = "Price", main = "S&P over the past 20 years")
+
+
+plot(eco$Date, 
+     eco$house, 
+     type = "l", xlab = "Date", ylab = "Price", main = "S&P over the past 20 years")
+
+```
+
+```{r}
+```
+

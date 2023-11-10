@@ -1,0 +1,66 @@
+---
+title: "diag_11102023"
+author: "Ryo Tanaka"
+date: "2023-11-10"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(tidyverse)
+data <- read.csv("./data_mastersheet.csv")
+```
+
+```{r}
+summary(data)
+```
+
+```{r}
+str(data)
+data <- data %>% 
+  mutate(gold_price_perc = as.numeric(gold_price_perc),
+         mortgage_perc = as.numeric(mortgage_perc),
+         nat_gas_perc = as.numeric(nat_gas_perc),
+         corn_perc = as.numeric(corn_perc),
+         Date = as.Date(Date, "%m/%d/%Y"))
+str(data)
+colnames(data)
+```
+
+```{r}
+data_lm <- lm(s_p ~ GDP + Real_GDP + Resi_Pop + Elec + 
+                Unemp + house + money_sup + prod + 
+                cpi + pers_cosum + security + gold_price_perc + 
+                mortgage_perc + nat_gas_perc + corn_perc,
+              data = data)
+summary(data_lm)
+```
+
+```{r}
+plot(x = data_lm$fitted.values,
+     y = data_lm$residuals,
+     ylim = c(-0.15,0.15),
+     xlab = "Fitted Values",
+     ylab = "Residuals")
+abline(0,0)
+```
+
+```{r}
+qqnorm(data_lm$residuals)
+qqline(data_lm$residuals)
+```
+
+```{r}
+shapiro.test(data_lm$residuals)
+```
+
+```{r}
+hist(data_lm$residuals,
+     xlab = "Residuals",
+     ylab = "Frequency",
+     main = "Residual Histogram")
+```
+
